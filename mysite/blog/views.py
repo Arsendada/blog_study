@@ -4,9 +4,9 @@ from .models import Post
 
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.published.all()
     return render(request,
-                  'blog/posts/list.html',
+                  'blog/post/list.html',
                   {'posts': posts})
 
 
