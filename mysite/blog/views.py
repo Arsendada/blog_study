@@ -6,7 +6,7 @@ from django.views.generic import ListView
 from .forms import EmailPostForm
 
 from .models import Post
-from ..mysite.settings import EMAIL_HOST_USER
+from mysite.settings import EMAIL_HOST_USER
 
 
 # def post_list(request):
@@ -61,6 +61,7 @@ def post_share(request, post_id):
             message = f"Read {post.title} at {post_url}\n\n" \
                       f"{cd['name']}\'s comments: {cd['comments']}"
             send_mail(subject, message, EMAIL_HOST_USER, [cd['to']])
+            sent = True
     else:
         form = EmailPostForm()
     return render(
